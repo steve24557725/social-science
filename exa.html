@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel planner</title>
+    <style>
+      .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <p>Please input your information</p>
+      </div>
+      <div>
+        <input id="age" placeholder="Your age" />
+        <input id="cost" placeholder="Your budget $" />
+        <button onclick="calculate()">enter</button>
+        <h1 id="text"></h1>
+      </div>
+    </div>
+  </body>
+  <script>
+    let informations = [];
+    informations[5] = [
+      " 1) Landing in Hushigtiin hundii(flight ticket 2 ways - 1100$)",
+      " 2) Stay in Novotel Ulaanbaatar hotel for 3 days - 390$",
+      " 3) visit museums around the UB - 50$ ",
+      " 4) visit night clubs(ZU, Mint, Street) - 390$ ",
+      " 5) try gobi dessert and grassland tour (8 days)- 1600$",
+      " 6) Go back to the airport",
+      " 7) Go home",
+      " !! Have a safe travel !!",
+      "Your approximate total cost: 4000$",
+    ];
+    informations[4] = [
+      "1) Landing in Hushigtiin hundii(flight ticket 2 ways - 1100$)",
+      " 2) Stay in Novotel Ulaanbaatar hotel for 3 days - 390$",
+      " 3) visit night clubs(ZU, Mint, Street) - 390$ ",
+      " 4) Go to Terelj national park with your friends",
+      " 5) Stay in Red rock resort @ Terelj for 3 nights - 264$",
+      " 6) Try entertainments in terelj like horse riding and extreme sports - 50$",
+      " 7) Go back to the airport",
+      " 8) Go home",
+      " !! Have a safe travel !!",
+      "Your approximate total cost: 2000$",
+    ];
+    informations[3] = ["Sorry, Your budget is not enough for Mongolia"];
+    informations[2] = [
+      "1) Landing in Hushigtiin hundii airport(flight ticket 2 ways - 1100$)",
+      " 2) Stay in Novotel Ulaanbaatar hotel for 3 days - 390$",
+      " 3) visit museums around the UB - 50$ ",
+      " 4) try gobi dessert and grassland tour (8 days)- 1600$",
+      " 5) Go back to the airport",
+      " 8) Go home",
+      " ",
+      " !! Have a safe travel !!",
+      "Your approximate total cost: 3500$",
+    ];
+    informations[1] = [
+      "1) Landing in Hushigtiin hundii airport(flight ticket 2 ways - 1100$)",
+      "2) Stay in Novotel Ulaanbaatar hotel for 2 nights - 260$",
+      "3) visit museums around the UB - 50$",
+      "4) Gobi dessert travel (4 days)- 910$",
+      "5) Go back to the airport",
+      "8) Go home",
+      " ",
+      " !! Have a safe travel !!",
+      "Your approximate total cost: 2400$",
+    ];
+    function calculate() {
+      let budget = document.getElementById("cost").value;
+      let age = document.getElementById("age").value;
+      document.getElementById("text").innerHTML = "";
+
+      if (age > 30 && budget < 3500 && budget >= 2400) {
+        informations[1].map((item) => {
+          document.getElementById("text").innerHTML += item + "<br>";
+        });
+      }
+
+      if (age >= 30 && budget < 2400) {
+        informations[3].map((item) => {
+          document.getElementById("text").innerHTML += item + "<br>";
+        });
+      }
+
+      if (age >= 30 && budget >= 3500) {
+        informations[2].map((item) => {
+          document.getElementById("text").innerHTML += item + "<br>";
+        });
+      }
+
+      if (age <= 30 && budget < 2400) {
+        informations[3].map((item) => {
+          document.getElementById("text").innerHTML += item + "<br>";
+        });
+      }
+
+      if (age <= 30 && budget > 2400 && budget < 4000) {
+        informations[4].map((item) => {
+          document.getElementById("text").innerHTML += item + "<br>";
+        });
+      }
+      if (age <= 30 && budget >= 4000) {
+        informations[5].map((item) => {
+          document.getElementById("text").innerHTML += item + "<br>";
+        });
+      }
+    }
+  </script>
+</html>
